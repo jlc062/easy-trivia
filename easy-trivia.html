@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>Easy Trivia Main</title>
+        <link href="css/easy-trivia.css?v=2" rel="stylesheet"/>
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    </head>
+    <body onload="pageLoad()">
+        <div class="navbar bg-dark">
+            <div class="navbar-brand mx-auto">
+                <span class="text-primary">Easy Trivia Questions</span>
+            </div>
+        </div>
+        <div class="col-lg-6 offset-lg-3 col-sm-10 offset-sm-1">
+            <div class="card card-body bg-light">
+                <div class="form-group text-center">
+                    <label>Number of Questions:</label>
+                    <input class="form-control col-6 offset-3" id="num-questions" type="number" value="10"/>
+                </div>
+                <div class="checkable text-center checker">
+                    <label>Hide Answers</label>
+                    <div class="my-checkbox"><input id="hidden-answers" type="checkbox"/></div>
+                </div>
+                <div class="checkable text-center ">
+                    <label>Show Hints</label>
+                    <div class="my-checkbox"><input id="hints" type="checkbox"/></div>
+                </div>
+                <!-- <div class="form-group text-center ">
+                    <label>Category</label>
+                    <input class="form-control col-6 offset-3"/>
+                </div> -->
+            </div>
+        </div>
+        <button class="col-6 offset-3 btn btn-success" onclick="clicked()">Generate Questions</button>
+        <div class="col-lg-8 offset-lg-2"><div id="question-list"></div></div>
+        <script src="js/site.js?v=2"></script>
+    </body>
+</html>
