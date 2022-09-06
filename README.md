@@ -1,5 +1,5 @@
 # Welcome to Easy Trivia
-# Authour: James Campbell
+# Author: James Campbell
 # Based on a trivia question generator api called:
 # Open Trivia Database
 # Source: https://opentdb.com/
