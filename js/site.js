@@ -279,9 +279,11 @@ function storeUsername() {
     var username = userNode.value;
     if (username == "" || username == null) {
         alert("Please Enter a Username!")
+    } else {
+        sessionStorage.setItem("username", username);
+        location.href = "easy-trivia.html";
     }
-    sessionStorage.setItem("username", username);
-    location.href = "easy-trivia.html"
+    
 }
 /**************************
  **************************
