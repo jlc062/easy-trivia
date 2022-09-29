@@ -1,10 +1,17 @@
+var _username = "";
+
 function pageLoad(){
     const numQuestions = 10;
+    debugger;
     getAPIToken();
+    _username = location.search.substring(1);
+
 }
 
 // Append each question and answer to table, or clear table if passed empty strings for question, answer.
 function createTable(numQuestions, questions, answers, allIncorrectAnswers){
+    debugger;
+    var x = _username;
     let entryWay = document.getElementById('question-list');
     isClear = questions.length == 0;
     for( let i = 0; i <numQuestions; i++){
@@ -14,27 +21,30 @@ function createTable(numQuestions, questions, answers, allIncorrectAnswers){
         nodeQuestion.classList.add('question');
         let nodeAnswer = createNode(answers, i);
         nodeAnswer.classList.add('answer');
+        nodeAnswer.id = `answer${i}`;
+
         if (isAnswersHidden()){
             nodeAnswer.className ="hiddenAnswer";
-            nodeAnswer.id = `answer${i}`;
             nodeAnswer.classList.add('ans-reveal');
         }
         newRow.append(nodeQuestion);
         if(isHints()){
             if (allIncorrectAnswers[i].length == 1){
-                console.log('here');
                 newRow.append(createTrueFalse());
             }
             else{
                 newRow.append(createPossibleAnswers(allIncorrectAnswers, answers, i));
             }
         }
+        
         newRow.append(nodeAnswer);
         if(!isClear && isAnswersHidden()){
             let revealButton = createReveal(i);
             revealButton.classList.add('ans-reveal');
             newRow.append(revealButton);
         }
+        newRow.append(createSave(i));
+
         entryWay.append(newRow);
     }
 }
@@ -84,7 +94,15 @@ function shuffle(array) {
   }
   return array;
 }
-
+function createSave(index){
+    let newNodeBuffer = document.createElement('div');
+    let newNode = document.createElement('span');
+    newNode.innerHTML = "Save Question";
+    newNodeBuffer.append(newNode);
+    newNodeBuffer.className = "save-answer";
+    newNodeBuffer.id = `save${index}`;
+    return newNodeBuffer;
+}
 function createNode(arr, index){
     let newNodeBuffer = document.createElement('div');
     let newNode = document.createElement('span');
@@ -205,4 +223,14 @@ function isHints(){
 function isAnswersHidden(){
     let hiddenAnswers = document.getElementById('hidden-answers');
     return hiddenAnswers.checked;
+}
+function checkUsername(){
+    debugger;
+    var userNode = document.getElementById("username");
+    if (userNode.value == ""){
+        alert("Please Enter a Username!")
+    }
+    else {
+        location.href = `easy-trivia.html?${userNode.value}`
+    }
 }

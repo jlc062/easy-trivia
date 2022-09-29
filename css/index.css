@@ -1,6 +1,5 @@
-
 .index-content > div .row{
-    padding: 40px 0;
+    padding: 25px 0;
 }
 @media only screen and (max-device-width: 480px) {
     .index-container div .row{

@@ -1,3 +1,4 @@
+
 body >div{
   padding: 30px 0;
 }
@@ -53,6 +54,10 @@ input[type=number]{
 .question::before{
   content: "Q: ";
   font-size: 20px;
+}
+.save-answer{
+  background-color: #007bff!important;
+
 }
 @media only screen and (max-device-width: 480px) {
   label{
