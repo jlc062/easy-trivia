@@ -1,11 +1,15 @@
 
 body >div{
-  padding: 30px 0;
+  margin: 30px 0;
 }
+
 .navbar span{
   font-size: 60px;
 }
-.checkable{
+.back-btn{
+  height: 60px;
+}
+.centered{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,7 +20,12 @@ body >div{
   -webkit-transform: scale(3,3);
 
 }
-label{
+.back-btn{
+  border-radius: 5px;
+  height: 50px;
+  cursor: pointer;
+}
+label, .back-btn > span {
   font-size: 25px;
 }
 input[type=number]{
@@ -95,12 +104,6 @@ input[type=number]{
   .hint-list .hint span{
     font-size: 26px !important;
   }
-}
-div.main-page{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
 }
  div.main-title span{
     font-size: 45px;

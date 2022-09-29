@@ -4,7 +4,7 @@
         <link href="css/bootstrap.min.css" rel="stylesheet"/>
         <link href="css/index.css?v=2" rel="stylesheet"/>
     </head>
-    <body class="bg-light">
+    <body onload="checkUsername()" class="bg-light">
         <div class="index-container">
             <div class="container-fluid bg-dark">
                 <div class="row">
@@ -24,11 +24,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div id="username-input" class="row">
                             <input id="username" class= "col-lg-2 offset-lg-5 col-sm-6 offset-sm-3 text-center" type="text" placeholder="Enter Username">
                     </div>
                     <div class="row">
-                        <a class="btn btn-success col-lg-2 offset-lg-5 col-sm-6 offset-sm-3 text-light text-center"  onclick="checkUsername()">
+                        <a class="btn btn-success col-lg-2 offset-lg-5 col-sm-6 offset-sm-3 text-light text-center" id="enter" onclick="storeUsername()">
                             <span>Enter</span>
                         </a>
                     </div>

@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>My Trivia</title>
+        <link href="css/easy-trivia.css?v=2" rel="stylesheet"/>
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <div class="navbar bg-dark opacity-filter">
+            <div class="navbar-brand mx-auto">
+                <span class="text-primary">My Trivia Questions</span>
+            </div>
+        </div>
+        <div class = "row">
+            <div class="col-lg-4 offset-lg-4 col-sm-6 offset-sm-3 opacity-filter centered back-btn btn-danger" onclick="indexPage()">
+                    <span>Home</span>
+            </div>
+            <div class="col-lg-4 offset-lg-4 col-sm-6 offset-sm-3 opacity-filter centered back-btn btn-primary" onclick="easyTriviaPage()">
+                <span>Easy Trivia</span>
+            </div>
+        </div>
+        
+        <div class="col-lg-6 offset-lg-3 col-sm-10 offset-sm-1 opacity-filter">
+            <div class="card card-body bg-light">
+                <span>Questions and Answers</span>
+            </div>
+        </div>
+        <div class="col-lg-8 offset-lg-2"><div id="question-list"></div></div>
+        <script src="js/my-trivia.js?v=2"></script>
+    </body>
+</html>
