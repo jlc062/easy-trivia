@@ -4,7 +4,7 @@
         <link href="css/easy-trivia.css?v=2" rel="stylesheet"/>
         <link href="css/bootstrap.min.css" rel="stylesheet"/>
     </head>
-    <body>
+    <body onload="onLoadMyTrivia()">
         <div class="navbar bg-dark opacity-filter">
             <div class="navbar-brand mx-auto">
                 <span class="text-primary">My Trivia Questions</span>
@@ -22,6 +22,9 @@
         <div class="col-lg-6 offset-lg-3 col-sm-10 offset-sm-1 opacity-filter">
             <div class="card card-body bg-light">
                 <span>Questions and Answers</span>
+            </div>
+            <div id = "display-area">
+
             </div>
         </div>
         <div class="col-lg-8 offset-lg-2"><div id="question-list"></div></div>

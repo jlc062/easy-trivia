@@ -1,5 +1,7 @@
 var _username = "";
 var _token = "";
+var _answerMap = new Map();
+var _questionMap = new Map();
 
 
 /**************************
@@ -12,15 +14,21 @@ var _token = "";
 function createTable(numQuestions, questions, answers, allIncorrectAnswers) {
     var x = _username;
     let entryWay = document.getElementById('question-list');
+    _answerMap.clear
     isClear = questions.length == 0;
+
     for (let i = 0; i < numQuestions; i++) {
         let newRow = document.createElement('div');
-
         let nodeQuestion = createNode(questions, i);
-        nodeQuestion.classList.add('question');
+        nodeQuestion.classList.add(`question`);
+        nodeQuestion.id = `question${i}`;
+        _questionMap.set(`${i}`, `${answers[i]}`);
+
+
         let nodeAnswer = createNode(answers, i);
         nodeAnswer.classList.add('answer');
         nodeAnswer.id = `answer${i}`;
+        _answerMap.set(`${i}`, `${answers[i]}`);
 
         if (isAnswersHidden()) {
             nodeAnswer.className = "hiddenAnswer";
@@ -35,7 +43,6 @@ function createTable(numQuestions, questions, answers, allIncorrectAnswers) {
                 newRow.append(createPossibleAnswers(allIncorrectAnswers, answers, i));
             }
         }
-
         newRow.append(nodeAnswer);
         if (!isClear && isAnswersHidden()) {
             let revealButton = createReveal(i);
@@ -156,7 +163,35 @@ function createSave(index) {
     newNodeBuffer.append(newNode);
     newNodeBuffer.className = "save-answer";
     newNodeBuffer.id = `save${index}`;
+    newNodeBuffer.onclick = () => {
+        saveQuestion(newNodeBuffer, index);
+    };
     return newNodeBuffer;
+}
+
+function saveQuestion (saveNode, index) {
+    saveNode.class ="saved";
+    let url = "https://easytriviafunction.azurewebsites.net/api/EasyTriviaAPI";
+    let question = document.getElementById(`question${index}`).textContent;
+    let answer = document.getElementById(`answer${index}`).textContent;
+    debugger;
+    jsonData =  createJsonPayload(question);
+    xhr = createXMLHTTP(url, "POST");
+    xhr.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+    xhr.onload = function () {
+        
+        return this.response;
+    }
+    xhr.send(jsonData);
+
+}
+function createJsonPayload (question) {
+    json = {
+        "Username" : _username,
+        "TriviaQuestion" : question
+    }
+    return JSON.stringify(json);
+    
 }
 
 function createNode(arr, index) {
@@ -207,7 +242,6 @@ function isAnswersHidden() {
  **************************/
 
  function getAPIToken() {
-    debugger;
     let url = "https://opentdb.com/api_token.php?command=request";
     let xhr =  createXMLHTTP(url, "GET");
     xhr.onload = function(){
@@ -254,7 +288,6 @@ function easyTriviaPage(){
 function pageLoad() {
     const numQuestions = 10;
     getAPIToken();
-    debugger;
     _username = sessionStorage.getItem("username");
 }
 
@@ -274,7 +307,6 @@ function checkUsername() {
 }
 
 function storeUsername() {
-    debugger;
     var userNode = document.getElementById("username");
     var username = userNode.value;
     if (username == "" || username == null) {
@@ -307,3 +339,6 @@ function createXMLHTTP(url, method) {
  **************************
  **************************
  **************************/
+function saveTrivia (triviaId) {
+    document.getElementById()
+}
