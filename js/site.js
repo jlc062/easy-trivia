@@ -35,6 +35,8 @@ function createTable(numQuestions, questions, answers, allIncorrectAnswers) {
             nodeAnswer.classList.add('ans-reveal');
         }
         newRow.append(nodeQuestion);
+        nodeQuestion.after(createSave(i));
+
         if (isHints()) {
             if (allIncorrectAnswers[i].length == 1) {
                 newRow.append(createTrueFalse());
@@ -49,8 +51,6 @@ function createTable(numQuestions, questions, answers, allIncorrectAnswers) {
             revealButton.classList.add('ans-reveal');
             newRow.append(revealButton);
         }
-        newRow.append(createSave(i));
-
         entryWay.append(newRow);
     }
 }
@@ -161,7 +161,7 @@ function createSave(index) {
     let newNode = document.createElement('span');
     newNode.innerHTML = "Save Question";
     newNodeBuffer.append(newNode);
-    newNodeBuffer.className = "save-answer";
+    newNodeBuffer.className = "save-answer btn btn-primary centered";
     newNodeBuffer.id = `save${index}`;
     newNodeBuffer.onclick = () => {
         saveQuestion(newNodeBuffer, index);
@@ -169,13 +169,16 @@ function createSave(index) {
     return newNodeBuffer;
 }
 
+
 function saveQuestion (saveNode, index) {
-    saveNode.class ="saved";
+    debugger;
+    saveNode.onclick = null;
+    saveNode.className = "saved";
+    saveNode.innerHTML = "Saved!";
     let url = "https://easytriviafunction.azurewebsites.net/api/EasyTriviaAPI";
     let question = document.getElementById(`question${index}`).textContent;
     let answer = document.getElementById(`answer${index}`).textContent;
-    debugger;
-    jsonData =  createJsonPayload(question);
+    jsonData =  createJsonPayload(question, answer);
     xhr = createXMLHTTP(url, "POST");
     xhr.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
     xhr.onload = function () {
@@ -185,10 +188,11 @@ function saveQuestion (saveNode, index) {
     xhr.send(jsonData);
 
 }
-function createJsonPayload (question) {
+function createJsonPayload (question, answer) {
     json = {
         "Username" : _username,
-        "TriviaQuestion" : question
+        "TriviaQuestion" : question,
+        "TriviaAnswer" : answer
     }
     return JSON.stringify(json);
     

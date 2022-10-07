@@ -21,16 +21,31 @@ function onLoadMyTrivia () {
 function displayTrivia (triviaList) {
     let displayArea =  document.getElementById("display-area");
 
+    let questionNodeBuffer = document.createElement('div');
+    questionNodeBuffer.className = "questions";    
+    let newNodeQuestionLabel = document.createElement('span');
+    newNodeQuestionLabel.innerHTML = "Question";
+    questionNodeBuffer.append(newNodeQuestionLabel);
+
+    let answerNodeBuffer = document.createElement('div');
+    answerNodeBuffer.className = "answers";
+    let newNodeAnswerLabel = document.createElement('span');
+    newNodeAnswerLabel.innerHTML = "Answer";
+    answerNodeBuffer.append(newNodeAnswerLabel);
+    
     triviaList.forEach(trivia => {
-        let questionNodeBuffer = document.createElement('div');
-        questionNodeBuffer.class = "question-node";
-        let newNodeQuestionLabel = document.createElement('span');
+        
         let newNodeQuestion = document.createElement('span');
-        newNodeQuestionLabel.innerHTML = "Question: ";
         newNodeQuestion.innerHTML = trivia.TriviaQuestion;
-        questionNodeBuffer.append(newNodeQuestionLabel);
         questionNodeBuffer.append(newNodeQuestion);
+
+        
+        let newNodeAnswer = document.createElement('span');
+        newNodeAnswer.innerHTML = trivia.TriviaAnswer;
+        answerNodeBuffer.append(newNodeAnswer);
+
         displayArea.append(questionNodeBuffer);
+        displayArea.append(answerNodeBuffer);
         // let answerNodeBuffer = document.createElement('div');
         // let newNodeAnswerLabel = document.createElement('span');
         // let newNodeAnswer = document.createElement('span');

@@ -2,7 +2,10 @@
     <head>
         <title>My Trivia</title>
         <link href="css/easy-trivia.css?v=2" rel="stylesheet"/>
+        <link href="css/my-trivia.css?v=2" rel="stylesheet"/>
         <link href="css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="css/tabulator.min.css" rel="stylesheet">
+        <script type="text/javascript" src="js/tabulator.min.js"></script>
     </head>
     <body onload="onLoadMyTrivia()">
         <div class="navbar bg-dark opacity-filter">
@@ -19,12 +22,12 @@
             </div>
         </div>
         
-        <div class="col-lg-6 offset-lg-3 col-sm-10 offset-sm-1 opacity-filter">
+        <div class="col-10 offset-1 opacity-filter">
+            <div id="example-table"></div>
             <div class="card card-body bg-light">
                 <span>Questions and Answers</span>
             </div>
             <div id = "display-area">
-
             </div>
         </div>
         <div class="col-lg-8 offset-lg-2"><div id="question-list"></div></div>
