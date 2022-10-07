@@ -3,7 +3,7 @@ body >div{
   margin: 30px 0;
 }
 .save-answer{
-  cursor: pointer;
+  cursor: pointer !important;
   width: 100%;
 }
 .saved{
@@ -137,4 +137,3 @@ input[type=number]{
   .tabulator-row .tabulator-cell{
     padding:8px 4px;
 }
-/*
